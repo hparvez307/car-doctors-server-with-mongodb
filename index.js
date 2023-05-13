@@ -7,9 +7,17 @@ require('dotenv').config();
 const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 
 // express middle ware
-app.use(cors());
+
 app.use(express.json());
 
+// const corsConfig = {
+//   origin: '*',
+//   Credentials: true,
+//   methods: [
+//     "GET", "POST", "PATCH", "DELETE"
+//   ]
+// }
+app.use(cors());
 
 
 
@@ -108,27 +116,8 @@ async function run() {
       res.send(result)
     })
 
-    // put method
-
-    // app.put('/bookings/:id', async(req,res) => {
-    //   const id = req.params.id;
-    //   const filter = {_id: new ObjectId(id)};
-    //   const body = req.body;
-    //   const options = {upsert: true};
-    //   const updateBookings = {
-    //       $set: {
-    //           name: body.name,
-    //           _id: body._id,
-    //           title: body.title,
-    //           date: body.date,
-    //           service: body.service,
-    //           price: body.price,
-    //           img: body.img
-    //       }
-    //   }
-    //   const result = await bookingCollection.updateOne(filter,updateBookings,options);
-    //   res.send(result)
-    // })
+    
+   
 
     // patch method
     app.patch('/bookings/:id', async (req, res) =>{
